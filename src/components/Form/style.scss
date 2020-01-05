@@ -1,0 +1,36 @@
+.form {
+  flex: 1;
+  display: flex;
+
+  &__inputs {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 30%;
+    margin-right: 30px;
+    margin-bottom: 60px;
+
+    input[type='text'] {
+      padding: 8px 0 4px 8px;
+      margin-bottom: 8px;
+    }
+
+    textarea {
+      height: 80px;
+      box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  &__btn {
+    align-self: flex-start;
+    border: none;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    background-color: var(--color1-darker);
+    border-radius: 5px;
+    color: #fff;
+    padding: 8px 10px;
+  }
+
+  &:not(:last-child) {
+    border-bottom: 1px solid var(--color1-normal);
+  }
+}
