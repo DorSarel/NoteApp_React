@@ -1,0 +1,16 @@
+.note {
+  flex: 1;
+  background-color: var(--color2-gray);
+  //   flex-basis: 25%;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+
+  &__header {
+    border-bottom: 1px solid #000;
+    background-color: var(--color2-bright);
+    padding: 3px;
+  }
+
+  &__body {
+    padding: 6px 6px 6px 3px;
+  }
+}

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Form } from './components/Form';
+import { Note } from './components/Note';
 import './App.scss';
 
 class App extends Component {
@@ -11,7 +12,7 @@ class App extends Component {
     return (
       <div className='main'>
         <Form />
-        <div className='main__gallery'>bdbsdbd</div>
+        <Note />
       </div>
     );
   }

@@ -3,6 +3,10 @@
   --color1-light: hsla(var(--base-color1), 50%, 75%, 100%);
   --color1-normal: hsla(var(--base-color1), 50%, 50%, 100%);
   --color1-darker: hsla(var(--base-color1), 50%, 35%, 100%);
+
+  --base-color2: 60;
+  --color2-gray: hsla(var(--base-color2), 80%, 85%, 100%);
+  --color2-bright: hsla(var(--base-color2), 50%, 85%, 100%);
 }
 
 * {
