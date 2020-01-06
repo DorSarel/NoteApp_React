@@ -11,11 +11,13 @@ class App extends Component {
     body: '',
     editMode: false,
     editNoteId: -1,
+    validId: 0,
   };
 
   componentDidMount() {
-    const notes = JSON.parse(localStorage.getItem('notes') || '[]');
-    this.setState({ notes });
+    const notes = utils.getDataFromStorage('notes');
+    let id = utils.getDataFromStorage('id');
+    this.setState({ notes, validId: ++id });
   }
 
   onInputChangeHandler = e => {
@@ -38,11 +40,21 @@ class App extends Component {
     const note = {
       title: this.state.title,
       body: this.state.body,
-      id: utils.generateId(),
+      id: this.state.validId,
     };
+    console.log(note.id);
     const newNotes = [note, ...this.state.notes];
-    this.setState({ notes: newNotes, title: '', body: '' });
+    this.setState(prevState => {
+      return {
+        notes: newNotes,
+        title: '',
+        body: '',
+        validId: ++prevState.validId,
+      };
+    });
+
     utils.updateStorage('notes', JSON.stringify(newNotes));
+    utils.updateStorage('id', this.state.validId);
   };
 
   deleteNote = noteId => {
