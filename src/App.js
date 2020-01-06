@@ -13,6 +13,11 @@ class App extends Component {
     editNoteId: -1,
   };
 
+  componentDidMount() {
+    const notes = JSON.parse(localStorage.getItem('notes') || '[]');
+    this.setState({ notes });
+  }
+
   onInputChangeHandler = e => {
     const noteTitle = e.target.value;
     this.setState({ title: noteTitle });
@@ -37,6 +42,7 @@ class App extends Component {
     };
     const newNotes = [note, ...this.state.notes];
     this.setState({ notes: newNotes, title: '', body: '' });
+    utils.updateStorage('notes', JSON.stringify(newNotes));
   };
 
   deleteNote = noteId => {
@@ -46,6 +52,7 @@ class App extends Component {
 
     const notes = this.state.notes.filter(note => note.id !== noteId);
     this.setState({ notes });
+    utils.updateStorage('notes', JSON.stringify(notes));
   };
 
   editNote = noteId => {
@@ -80,6 +87,7 @@ class App extends Component {
       title: '',
       body: '',
     });
+    utils.updateStorage('notes', JSON.stringify(notes));
   };
 
   render() {
