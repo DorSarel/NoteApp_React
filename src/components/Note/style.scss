@@ -7,7 +7,13 @@
   &__header {
     border-bottom: 1px solid #000;
     background-color: var(--color2-bright);
+    display: flex;
+    align-items: center;
     padding: 8px;
+
+    h5 {
+      font-size: 16px;
+    }
   }
 
   &__body {
@@ -16,5 +22,29 @@
 
   &:not(:last-child) {
     margin-right: 8px;
+  }
+}
+
+.header__buttons {
+  margin-left: auto;
+}
+
+.header__buttons button:not(:last-child) {
+  margin-right: 5px;
+}
+
+.btn {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 4px;
+  outline: none;
+
+  &--delete {
+    color: red;
+  }
+
+  &--edit {
+    font-style: italic;
   }
 }
