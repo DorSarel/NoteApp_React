@@ -2,9 +2,9 @@ import React from 'react';
 import { Note } from '../Note';
 import './style.scss';
 
-export const NoteGallery = ({ notes }) => {
-  let notesComp = notes.map((note, idx) => (
-    <Note key={idx} title={note.title} body={note.body} />
+export const NoteGallery = ({ notes, deleteNote }) => {
+  let notesComp = notes.map(note => (
+    <Note key={note.id} note={note} delNote={deleteNote} />
   ));
   return <div className='gallery'>{notesComp}</div>;
 };

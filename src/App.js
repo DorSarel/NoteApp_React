@@ -28,9 +28,22 @@ class App extends Component {
       return;
     }
 
-    const note = { title: this.state.title, body: this.state.body };
+    const note = {
+      title: this.state.title,
+      body: this.state.body,
+      id: utils.generateId(),
+    };
     const newNotes = [note, ...this.state.notes];
     this.setState({ notes: newNotes, title: '', body: '' });
+  };
+
+  deleteNote = noteId => {
+    if (this.state.notes.length <= 0) {
+      return;
+    }
+
+    const notes = this.state.notes.filter(note => note.id !== noteId);
+    this.setState({ notes });
   };
 
   render() {
@@ -43,7 +56,7 @@ class App extends Component {
           changeText={this.onTextChangeHandler}
           addNote={this.addNote}
         />
-        <NoteGallery notes={this.state.notes} />
+        <NoteGallery notes={this.state.notes} deleteNote={this.deleteNote} />
       </div>
     );
   }
