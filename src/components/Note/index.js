@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.scss';
 
-export const Note = ({ note, delNote }) => {
+export const Note = ({ note, delNote, edit }) => {
   const { title, body, id } = note;
   return (
     <div className='note'>
@@ -11,7 +11,9 @@ export const Note = ({ note, delNote }) => {
           <button className='btn btn--delete' onClick={() => delNote(id)}>
             Delete
           </button>
-          <button className='btn btn--edit'>Edit</button>
+          <button className='btn btn--edit' onClick={() => edit(id)}>
+            Edit
+          </button>
         </div>
       </div>
       <div className='note__body'>{body}</div>
