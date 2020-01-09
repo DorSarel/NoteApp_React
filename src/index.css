@@ -1,27 +1,31 @@
 :root {
-  --base-color1: 210;
-  --color1-light: hsla(var(--base-color1), 50%, 75%, 100%);
-  --color1-normal: hsla(var(--base-color1), 50%, 50%, 100%);
-  --color1-darker: hsla(var(--base-color1), 50%, 35%, 100%);
-
-  --base-color2: 60;
-  --color2-gray: hsla(var(--base-color2), 80%, 85%, 100%);
-  --color2-bright: hsla(var(--base-color2), 50%, 85%, 100%);
+  --color1: hsla(176, 100%, 37%, 1);
+  --color2: hsla(184, 58%, 25%, 1);
+  --color3: hsla(187, 97%, 29%, 1);
+  --color4: hsla(63, 69%, 85%, 1);
+  --color5: hsla(324, 54%, 52%, 1);
 }
 
 * {
   margin: 0;
   padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
   box-sizing: border-box;
+  font-size: 62.5%; /* 1rem = 10px */
 }
 
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  background-color: var(--color1-light);
+  font-family: sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  background-color: var(--color2);
+  min-height: 100vh;
 }

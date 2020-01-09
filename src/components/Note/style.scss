@@ -1,29 +1,31 @@
 .note {
-  background-color: var(--color2-gray);
-  border: 1px solid rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--color2);
   border-radius: 5px;
-  flex-basis: 25%;
-  margin-bottom: 8px;
+  flex: 0 0 25%;
+  margin-bottom: 0.8rem;
+  overflow: hidden;
 
   &__header {
     border-bottom: 1px solid #000;
-    background-color: var(--color2-bright);
+    background-color: var(--color3);
     display: flex;
     align-items: center;
-    padding: 8px;
+    padding: 0.8rem;
 
     h5 {
-      font-size: 16px;
+      font-size: 1.6rem;
     }
   }
 
   &__body {
-    padding: 8px;
-    overflow-wrap: break-all;
+    background-color: var(--color4);
+    padding: 0.8rem;
+    overflow-wrap: break-word;
+    font-size: 1.5rem;
   }
 
   &:not(:last-child) {
-    margin-right: 8px;
+    margin-right: 1.75rem;
   }
 }
 
@@ -32,14 +34,14 @@
 }
 
 .header__buttons button:not(:last-child) {
-  margin-right: 5px;
+  margin-right: 0.5rem;
 }
 
 .btn {
   border: none;
   background-color: transparent;
   cursor: pointer;
-  padding: 4px;
+  padding: 0.4rem;
   outline: none;
 
   &--delete {
