@@ -37,9 +37,16 @@ class App extends Component {
       return;
     }
 
+    let today = new Date();
+    const day = today.getDate();
+    const month = today.getMonth() + 1;
+    const year = today.getFullYear();
+    today = `${day}-${month}-${year}`;
+
     const note = {
       title: this.state.title,
       body: this.state.body,
+      created: today,
       id: this.state.validId,
     };
     console.log(note.id);
