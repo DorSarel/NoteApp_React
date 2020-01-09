@@ -1,9 +1,9 @@
 :root {
-  --color1: hsla(176, 100%, 37%, 1);
-  --color2: hsla(184, 58%, 25%, 1);
-  --color3: hsla(187, 97%, 29%, 1);
-  --color4: hsla(63, 69%, 85%, 1);
-  --color5: hsla(324, 54%, 52%, 1);
+  --color1: hsla(339, 100%, 86%, 1);
+  --color2: hsla(343, 47%, 80%, 1);
+  --color3: hsla(310, 34%, 86%, 1);
+  --color4: hsla(233, 17%, 90%, 1);
+  --color5: hsla(182, 94%, 93%, 1);
 }
 
 * {
@@ -26,6 +26,6 @@ body {
   font-family: sans-serif;
   font-weight: 400;
   line-height: 1.6;
-  background-color: var(--color2);
+  background-color: var(--color5);
   min-height: 100vh;
 }
