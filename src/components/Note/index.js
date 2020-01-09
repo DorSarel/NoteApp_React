@@ -1,14 +1,14 @@
 import React from 'react';
+import Markdown from 'markdown-to-jsx';
 import './style.scss';
 
-export const Note = ({ note, delNote, edit }) => {
-  const { title, body, created, id } = note;
+export const Note = ({ note, delNote }) => {
+  const { text, created, id, edit } = note;
   return (
     <div className='note'>
       <div className='note__header'>
-        <h5>{title}</h5>
         <span>{created}</span>
-        <div className='header__buttons'>
+        <div className='note__buttons'>
           <button className='btn btn--delete' onClick={() => delNote(id)}>
             Delete
           </button>
@@ -17,7 +17,9 @@ export const Note = ({ note, delNote, edit }) => {
           </button>
         </div>
       </div>
-      <div className='note__body'>{body}</div>
+      <div className='note__body' contentEditable={edit}>
+        <Markdown>{text}</Markdown>
+      </div>
     </div>
   );
 };
