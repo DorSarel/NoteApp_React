@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { NoteGallery } from './components/NoteGallery';
 import * as utils from './utils';
-import _ from 'lodash';
 import './App.scss';
 
 class App extends Component {
@@ -12,9 +11,9 @@ class App extends Component {
   };
 
   componentDidMount() {
-    // const notes = utils.getDataFromStorage('notes') || [];
-    // let id = utils.getDataFromStorage('id');
-    // this.setState({ notes, validId: ++id });
+    const notes = utils.getDataFromStorage('notes') || [];
+    let id = utils.getDataFromStorage('id');
+    this.setState({ notes, validId: ++id });
   }
 
   addNote = e => {
@@ -48,36 +47,22 @@ class App extends Component {
       };
     });
     // comment for debug
-    // utils.updateStorage('notes', JSON.stringify(newNotes));
-    // utils.updateStorage('id', this.state.validId);
+    utils.updateStorage('notes', JSON.stringify(newNotes));
+    utils.updateStorage('id', this.state.validId);
   };
 
   onNoteEdit = noteId => {
-    const notes = _.cloneDeep(this.state.notes);
-    const noteIndex = notes.findIndex(note => note.id === noteId);
-    if (noteIndex < 0) {
-      alert('Got wrong note ID');
-      return;
-    }
-
-    for (let note of notes) {
-      note.editMode = false;
-    }
-    let noteToEdit = notes[noteIndex];
-    noteToEdit.editMode = true;
-    this.setState({ notes, markdownText: noteToEdit.text });
+    const notes = utils.updateNoteData(this.state.notes, noteId, {
+      editMode: true,
+    });
+    this.setState({ notes, markdownText: notes[noteId].text });
   };
 
   onNoteConfirmEdit = noteId => {
-    const notes = _.cloneDeep(this.state.notes);
-    const noteIndex = notes.findIndex(note => note.id === noteId);
-    if (noteIndex < 0) {
-      alert('Got wrong note ID');
-      return;
-    }
-    let noteToEdit = notes[noteIndex];
-    noteToEdit.editMode = false;
-    noteToEdit.text = this.state.markdownText;
+    const notes = utils.updateNoteData(this.state.notes, noteId, {
+      text: this.state.markdownText,
+    });
+    utils.updateStorage('notes', JSON.stringify(notes));
     this.setState({ notes, markdownText: '' });
   };
 
