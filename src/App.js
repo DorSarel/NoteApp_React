@@ -62,11 +62,15 @@ class App extends Component {
   };
 
   onNoteConfirmEdit = noteId => {
-    const notes = utils.updateNoteData(this.state.notes, noteId, {
-      text: this.state.markdownText,
-    });
-    utils.updateStorage('notes', JSON.stringify(notes));
-    this.setState({ notes, markdownText: '' });
+    if (this.state.markdownText !== '') {
+      const notes = utils.updateNoteData(this.state.notes, noteId, {
+        text: this.state.markdownText,
+      });
+      utils.updateStorage('notes', JSON.stringify(notes));
+      this.setState({ notes, markdownText: '' });
+    } else {
+      this.deleteNote(noteId); // note has no text - delete it.
+    }
   };
 
   updateNoteText = e => {
