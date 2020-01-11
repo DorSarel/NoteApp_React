@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { NoteGallery } from './components/NoteGallery';
 import * as utils from './utils';
+import _ from 'lodash';
 import './App.scss';
 
 class App extends Component {
@@ -12,6 +13,7 @@ class App extends Component {
 
   componentDidMount() {
     const notes = utils.getDataFromStorage('notes') || [];
+    console.log(notes);
     let id = utils.getDataFromStorage('id');
     this.setState({ notes, validId: ++id });
   }
@@ -55,7 +57,8 @@ class App extends Component {
     const notes = utils.updateNoteData(this.state.notes, noteId, {
       editMode: true,
     });
-    this.setState({ notes, markdownText: notes[noteId].text });
+    const editedNote = notes.find(note => note.id === noteId);
+    this.setState({ notes, markdownText: editedNote.text });
   };
 
   onNoteConfirmEdit = noteId => {
@@ -68,6 +71,12 @@ class App extends Component {
 
   updateNoteText = e => {
     this.setState({ markdownText: e.target.value });
+  };
+
+  deleteNote = noteId => {
+    const notes = this.state.notes.filter(note => note.id !== noteId);
+    utils.updateStorage('notes', JSON.stringify(notes));
+    this.setState({ notes });
   };
 
   render() {
@@ -85,6 +94,7 @@ class App extends Component {
           textToUpdate={this.state.markdownText}
           confirmEdit={this.onNoteConfirmEdit}
           updateText={this.updateNoteText}
+          deleteNote={this.deleteNote}
         />
       </div>
     );

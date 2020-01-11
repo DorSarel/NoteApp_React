@@ -2,7 +2,14 @@ import React from 'react';
 import Markdown from 'markdown-to-jsx';
 import './style.scss';
 
-export const Note = ({ note, edit, textToUpdate, confirmEdit, updateText }) => {
+export const Note = ({
+  note,
+  edit,
+  textToUpdate,
+  confirmEdit,
+  updateText,
+  deleteNote,
+}) => {
   const { text, created, id, editMode } = note;
 
   let textToShow = (
@@ -35,7 +42,9 @@ export const Note = ({ note, edit, textToUpdate, confirmEdit, updateText }) => {
       <div className='note__header'>
         <span>{created}</span>
         <div className='note__buttons'>
-          <button className='btn btn--delete'>Delete</button>
+          <button className='btn btn--delete' onClick={() => deleteNote(id)}>
+            Delete
+          </button>
           {editButton}
         </div>
       </div>

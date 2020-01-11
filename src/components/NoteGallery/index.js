@@ -8,6 +8,7 @@ export const NoteGallery = ({
   textToUpdate,
   confirmEdit,
   updateText,
+  deleteNote,
 }) => {
   let notesComp = notes.map(note => (
     <Note
@@ -17,6 +18,7 @@ export const NoteGallery = ({
       textToUpdate={textToUpdate}
       confirmEdit={confirmEdit}
       updateText={updateText}
+      deleteNote={deleteNote}
     />
   ));
   return <div className='gallery'>{notesComp}</div>;
